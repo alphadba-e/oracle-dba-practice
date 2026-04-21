@@ -204,7 +204,7 @@ END;
 GRANT SELECT ON invoices TO app_readonly;
 
 -- Seal the upgrade
-ALTER PLUGGABLE DATABASE APPLICATION crm_app END UPGRADE '1.0' TO '2.0';
+ALTER PLUGGABLE DATABASE APPLICATION crm_app END UPGRADE TO '2.0';
 
 -- ===========================================
 -- STEP 7: Sync Application PDBs (pull upgrade)
