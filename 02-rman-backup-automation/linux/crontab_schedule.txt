@@ -1,0 +1,11 @@
+# ============================================================
+# oracle user crontab - ORADB backup schedule
+# Edit with: crontab -e    |    View with: crontab -l
+# Fields:  minute hour day-of-month month day-of-week  command
+# ============================================================
+
+# Level 0 base backup - every Friday at 22:00
+00 22 * * FRI      /bin/sh /home/oracle/scripts/rman_script0.sh >>/home/oracle/scripts/rman_lvl0.log 2>&1
+
+# Level 1 delta backup - Mon,Tue,Wed,Thu at 13:00 and 20:00
+00 13,20 * * 1,2,3,4   /bin/sh /home/oracle/scripts/rman_script1.sh >>/home/oracle/scripts/rman_lvl1.log 2>&1

@@ -1,0 +1,14 @@
+connect target '/ AS SYSBACKUP';
+SET ECHO ON;
+
+# ORAWINDB runs in NOARCHIVELOG mode, so a consistent whole-database
+# backup requires the database to be MOUNTED (not OPEN).
+shutdown immediate
+startup mount
+
+run {
+  BACKUP DATABASE TAG 'FULL_DB';
+}
+
+ALTER DATABASE OPEN;
+exit;
